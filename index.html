@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Doctor Yuvelirka — premium jewelry retail and expert repair in Incheon, South Korea. Official app coming soon to Google Play.">
-  <title>Doctor Yuvelirka | Premium Jewelry &amp; Restoration</title>
+  <meta id="meta-description" name="description" content="Doctor Yuvelirka — premium jewelry retail and expert repair in Incheon, South Korea. Official app coming soon to Google Play.">
+  <title id="doc-title">Doctor Yuvelirka | Premium Jewelry &amp; Restoration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -21,15 +21,8 @@
       --border: rgba(201, 169, 98, 0.4);
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: "Lora", Georgia, serif;
@@ -45,15 +38,9 @@
       letter-spacing: 0.05em;
     }
 
-    a {
-      color: var(--gold-light);
-    }
+    a { color: var(--gold-light); }
+    a:hover { color: var(--gold); }
 
-    a:hover {
-      color: var(--gold);
-    }
-
-    /* —— Header —— */
     header {
       position: sticky;
       top: 0;
@@ -63,19 +50,98 @@
     }
 
     .header-inner {
+      position: relative;
       max-width: 1140px;
       margin: 0 auto;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.5rem 0.75rem;
+      padding-right: 9rem;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem 1.5rem;
     }
 
-    .logo-wrap {
-      flex-shrink: 0;
-      line-height: 0;
+    .lang-dropdown {
+      position: absolute;
+      top: 0.65rem;
+      right: 1rem;
+      z-index: 220;
+      font-family: "Cinzel", serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
     }
+
+    .lang-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.75rem;
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      cursor: pointer;
+      min-width: 7.25rem;
+      justify-content: space-between;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .lang-trigger:hover,
+    .lang-dropdown.open .lang-trigger {
+      background: rgba(201, 169, 98, 0.12);
+    }
+
+    .lang-trigger .chevron {
+      font-size: 0.55rem;
+      opacity: 0.85;
+      transition: transform 0.2s;
+    }
+
+    .lang-dropdown.open .lang-trigger .chevron {
+      transform: rotate(180deg);
+    }
+
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      min-width: 100%;
+      background: var(--black);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    }
+
+    .lang-dropdown.open .lang-menu {
+      display: block;
+    }
+
+    .lang-option {
+      display: block;
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+      color: var(--gold);
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .lang-option:last-child { border-bottom: none; }
+    .lang-option:hover,
+    .lang-option[aria-selected="true"] {
+      background: rgba(201, 169, 98, 0.15);
+    }
+
+    .logo-wrap { flex-shrink: 0; line-height: 0; }
 
     .logo-wrap img {
       display: block;
@@ -115,25 +181,26 @@
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: var(--gold);
-    }
+    nav a:hover { color: var(--gold); }
 
     @media (max-width: 720px) {
       .header-inner {
         justify-content: center;
         text-align: center;
+        padding-right: 1.5rem;
+        padding-top: 2.75rem;
+      }
+      .lang-dropdown {
+        top: 0.5rem;
+        right: 0.75rem;
       }
       nav {
         margin-left: 0;
         justify-content: center;
       }
-      .logo-wrap img {
-        max-height: 120px;
-      }
+      .logo-wrap img { max-height: 120px; }
     }
 
-    /* —— Hero —— */
     .hero {
       min-height: 480px;
       display: grid;
@@ -145,9 +212,7 @@
         url("https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
     }
 
-    .hero-inner {
-      max-width: 720px;
-    }
+    .hero-inner { max-width: 720px; }
 
     .hero .eyebrow {
       font-family: "Cinzel", serif;
@@ -165,12 +230,8 @@
       margin-bottom: 1.25rem;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
+    .hero p { color: var(--muted); font-size: 1.05rem; }
 
-    /* —— Sections —— */
     .section {
       max-width: 1140px;
       margin: 0 auto;
@@ -193,7 +254,6 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    /* —— About —— */
     .about-grid {
       display: grid;
       grid-template-columns: 1.05fr 1fr;
@@ -202,9 +262,7 @@
     }
 
     @media (max-width: 860px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+      .about-grid { grid-template-columns: 1fr; }
     }
 
     .about-photo {
@@ -231,7 +289,6 @@
       font-weight: 600;
     }
 
-    /* —— Services —— */
     .services-band {
       background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.92), rgba(5, 5, 5, 0.96)),
@@ -252,9 +309,7 @@
     }
 
     @media (max-width: 900px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
+      .cards { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -283,12 +338,8 @@
       margin-bottom: 0.75rem;
     }
 
-    .card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
+    .card p { font-size: 0.95rem; color: var(--muted); }
 
-    /* —— Mobile app —— */
     .app-panel {
       text-align: center;
       padding: 3.25rem 2rem;
@@ -326,7 +377,6 @@
       color: var(--muted);
     }
 
-    /* —— Contact —— */
     .contact-card {
       max-width: 680px;
       margin: 0 auto;
@@ -350,22 +400,13 @@
       color: var(--gold);
     }
 
-    .contact-card dd {
-      color: var(--muted);
-      margin: 0;
-    }
+    .contact-card dd { color: var(--muted); margin: 0; }
 
     @media (max-width: 560px) {
-      .contact-card dl {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
-      }
-      .contact-card dt {
-        margin-top: 0.75rem;
-      }
+      .contact-card dl { grid-template-columns: 1fr; gap: 0.35rem; }
+      .contact-card dt { margin-top: 0.75rem; }
     }
 
-    /* —— Privacy —— */
     .privacy-shell {
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -395,26 +436,12 @@
       margin: 1.35rem 0 0.5rem;
     }
 
-    .privacy-scroll h3:first-child {
-      margin-top: 0;
-    }
+    .privacy-scroll h3:first-child { margin-top: 0; }
+    .privacy-scroll ul { margin: 0.4rem 0 0.65rem 1.2rem; }
+    .privacy-scroll li { margin-bottom: 0.3rem; }
 
-    .privacy-scroll ul {
-      margin: 0.4rem 0 0.65rem 1.2rem;
-    }
-
-    .privacy-scroll li {
-      margin-bottom: 0.3rem;
-    }
-
-    .privacy-scroll::-webkit-scrollbar {
-      width: 7px;
-    }
-
-    .privacy-scroll::-webkit-scrollbar-track {
-      background: #1a1a1a;
-    }
-
+    .privacy-scroll::-webkit-scrollbar { width: 7px; }
+    .privacy-scroll::-webkit-scrollbar-track { background: #1a1a1a; }
     .privacy-scroll::-webkit-scrollbar-thumb {
       background: var(--gold-dark);
       border-radius: 4px;
@@ -438,187 +465,197 @@
 <body>
   <header>
     <div class="header-inner">
+      <div class="lang-dropdown" id="lang-dropdown">
+        <button type="button" class="lang-trigger" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+          <span id="lang-current">🇬🇧 English</span>
+          <span class="chevron" aria-hidden="true">▼</span>
+        </button>
+        <div class="lang-menu" role="listbox" id="lang-menu" aria-label="Languages">
+          <button type="button" class="lang-option" role="option" data-lang="en" aria-selected="true">🇬🇧 English</button>
+          <button type="button" class="lang-option" role="option" data-lang="ko">🇰🇷 한국어</button>
+          <button type="button" class="lang-option" role="option" data-lang="ru">🇷🇺 Русский</button>
+          <button type="button" class="lang-option" role="option" data-lang="kk">🇰🇿 Қазақша</button>
+        </div>
+      </div>
+
       <div class="logo-wrap">
-        <img src="logo.png" alt="Doctor Yuvelirka — gold chalice and serpent emblem" style="mix-blend-mode: screen; max-height: 180px;">
+        <img src="logo.png" alt="Doctor Yuvelirka — gold chalice and serpent emblem" style="mix-blend-mode: screen; max-height: 180px;" id="logo-alt">
       </div>
       <div class="brand-text">
         <h1>Doctor Yuvelirka</h1>
-        <p class="tagline">Jewelry · Restoration · Excellence</p>
+        <p class="tagline" data-i18n="tagline">Jewelry · Restoration · Excellence</p>
       </div>
       <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#app">App</a>
-        <a href="#contact">Contact</a>
-        <a href="#privacy">Privacy</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#app" data-i18n="navApp">App</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#privacy" data-i18n="navPrivacy">Privacy</a>
       </nav>
     </div>
   </header>
 
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-inner">
-      <p class="eyebrow">Incheon · Republic of Korea</p>
-      <h2 id="hero-heading">Where Fine Jewelry Meets Master Restoration</h2>
-      <p>Boutique retail and a dedicated repair atelier for clients who expect precision, discretion, and lasting beauty in every piece.</p>
+      <p class="eyebrow" data-i18n="heroEyebrow">Incheon · Republic of Korea</p>
+      <h2 id="hero-heading" data-i18n="heroTitle">Where Fine Jewelry Meets Master Restoration</h2>
+      <p data-i18n="heroText">Boutique retail and a dedicated repair atelier for clients who expect precision, discretion, and lasting beauty in every piece.</p>
     </div>
   </section>
 
   <section class="section" id="about">
-    <h2 class="section-title">About Us</h2>
+    <h2 class="section-title" data-i18n="aboutTitle">About Us</h2>
     <div class="about-grid">
       <div class="about-photo">
-        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=960&q=80" alt="Artisan working on jewelry at Doctor Yuvelirka">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=960&q=80" alt="" id="about-img-alt">
       </div>
       <div class="about-copy">
-        <p><strong>Doctor Yuvelirka</strong> is a premium jewelry house and restoration workshop located in <strong>Incheon, Republic of Korea</strong>. We combine curated retail with bench-level expertise so every client receives a seamless experience—from selecting a piece to maintaining it for generations.</p>
-        <p>Our team works with precious metals, gemstones, and complex settings using proven traditional methods and modern equipment. Whether you visit us for a new acquisition or entrust us with a family heirloom, we treat each project with documented care and transparent communication.</p>
-        <p>From our address in Yeonsu-gu, we serve local and international customers who value craftsmanship, authenticity, and white-glove service at every stage.</p>
+        <p data-i18n-html="aboutP1"><strong>Doctor Yuvelirka</strong> is a premium jewelry house and restoration workshop located in <strong>Incheon, Republic of Korea</strong>. We combine curated retail with bench-level expertise so every client receives a seamless experience—from selecting a piece to maintaining it for generations.</p>
+        <p data-i18n-html="aboutP2">Our team works with precious metals, gemstones, and complex settings using proven traditional methods and modern equipment. Whether you visit us for a new acquisition or entrust us with a family heirloom, we treat each project with documented care and transparent communication.</p>
+        <p data-i18n="aboutP3"></p>
       </div>
     </div>
   </section>
 
   <div class="services-band">
     <section class="section" id="services">
-      <h2 class="section-title">Our Services</h2>
+      <h2 class="section-title" data-i18n="servicesTitle">Our Services</h2>
       <div class="cards">
         <article class="card">
           <div class="mark" aria-hidden="true">◆</div>
-          <h3>Jewelry Retail</h3>
-          <p>Handpicked rings, necklaces, earrings, and bespoke designs selected for quality of materials, finish, and timeless appeal. Personal consultation available in store.</p>
+          <h3 data-i18n="svc1Title">Jewelry Retail</h3>
+          <p data-i18n="svc1Text">Handpicked rings, necklaces, earrings, and bespoke designs selected for quality of materials, finish, and timeless appeal. Personal consultation available in store.</p>
         </article>
         <article class="card">
           <div class="mark" aria-hidden="true">⚙</div>
-          <h3>Repair &amp; Restoration</h3>
-          <p>Resizing, stone tightening, soldering, polishing, rhodium plating, and full structural restoration. Each repair is assessed, quoted, and tracked through completion.</p>
+          <h3 data-i18n="svc2Title">Repair &amp; Restoration</h3>
+          <p data-i18n="svc2Text">Resizing, stone tightening, soldering, polishing, rhodium plating, and full structural restoration. Each repair is assessed, quoted, and tracked through completion.</p>
         </article>
         <article class="card">
           <div class="mark" aria-hidden="true">☁</div>
-          <h3>E-Commerce</h3>
-          <p>Digital catalog, order requests, and integrated service workflows. Our upcoming mobile app extends secure shopping and live repair status for modern convenience.</p>
+          <h3 data-i18n="svc3Title">E-Commerce</h3>
+          <p data-i18n="svc3Text">Digital catalog, order requests, and integrated service workflows. Our upcoming mobile app extends secure shopping and live repair status for modern convenience.</p>
         </article>
       </div>
     </section>
   </div>
 
   <section class="section" id="app">
-    <h2 class="section-title">Mobile App</h2>
+    <h2 class="section-title" data-i18n="appTitle">Mobile App</h2>
     <div class="app-panel">
-      <span class="play-badge">Coming Soon to Google Play</span>
+      <span class="play-badge" data-i18n="appBadge">Coming Soon to Google Play</span>
       <p class="app-title">Doctor Yuvelirka</p>
-      <p>The official <strong>Doctor Yuvelirka</strong> Android app is under active development for release on Google Play. Customers will browse selected collections, place orders securely, submit repair requests with photos, and <strong>track repair status in real time</strong> from drop-off to pickup.</p>
-      <p>For partnerships or pre-launch inquiries, please contact us using the details below.</p>
+      <p data-i18n-html="appP1">The official <strong>Doctor Yuvelirka</strong> Android app is under active development for release on Google Play. Customers will browse selected collections, place orders securely, submit repair requests with photos, and <strong>track repair status in real time</strong> from drop-off to pickup.</p>
+      <p data-i18n="appP2">For partnerships or pre-launch inquiries, please contact us using the details below.</p>
     </div>
   </section>
 
   <section class="section" id="contact">
-    <h2 class="section-title">Contact</h2>
+    <h2 class="section-title" data-i18n="contactTitle">Contact</h2>
     <div class="contact-card">
       <dl>
-        <dt>Developer Name</dt>
+        <dt data-i18n="contactDev">Developer Name</dt>
         <dd>Doctor Yuvelirka</dd>
-        <dt>Address</dt>
-        <dd>Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea</dd>
-        <dt>Email</dt>
+        <dt data-i18n="contactAddr">Address</dt>
+        <dd data-i18n="contactAddrVal">Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea</dd>
+        <dt data-i18n="contactEmail">Email</dt>
         <dd><a href="mailto:dr.jewelry.korea@gmail.com">dr.jewelry.korea@gmail.com</a></dd>
       </dl>
     </div>
   </section>
 
   <section class="section" id="privacy">
-    <h2 class="section-title">Privacy Policy</h2>
-    <p class="privacy-intro">Privacy Policy for the <strong style="color: var(--gold-light);">Doctor Yuvelirka</strong> mobile application · Effective: October 21, 2026</p>
+    <h2 class="section-title" data-i18n="privacyTitle">Privacy Policy</h2>
+    <p class="privacy-intro" data-i18n-html="privacyIntro">Privacy Policy for the <strong style="color: var(--gold-light);">Doctor Yuvelirka</strong> mobile application · Effective: October 21, 2026</p>
     <div class="privacy-shell">
-      <div class="privacy-scroll">
-        <h3>1. Introduction</h3>
-        <p>Doctor Yuvelirka ("Company," "we," "us," or "our") publishes the Doctor Yuvelirka mobile application (the "App") and related websites and services. This Privacy Policy describes how we collect, use, store, share, and protect personal information when you download, register for, or use the App. By using the App, you acknowledge that you have read and understood this Privacy Policy. If you do not agree, please discontinue use of the App.</p>
-
-        <h3>2. Scope</h3>
-        <p>This policy applies to personal information processed through the App, customer support channels linked to the App, and online order or repair flows initiated within the App. It does not apply to third-party websites or services that we do not control, even if linked from the App.</p>
-
-        <h3>3. Information We Collect</h3>
-        <p>We may collect the following categories of information, depending on how you use the App:</p>
-        <ul>
-          <li><strong>Identity and contact data:</strong> full name, email address, telephone number, billing and shipping addresses, and account login credentials.</li>
-          <li><strong>Transaction and service data:</strong> product orders, repair job details, item descriptions, estimated values, photographs you upload, repair milestones, invoices, and support messages.</li>
-          <li><strong>Payment data:</strong> payments are handled by certified third-party payment processors. We do not store complete payment card numbers on our systems; we may retain transaction IDs, payment status, and limited billing metadata.</li>
-          <li><strong>Device and technical data:</strong> device model, operating system, app version, language settings, IP address, mobile identifiers, crash reports, diagnostic logs, and security event data.</li>
-          <li><strong>Usage analytics:</strong> screens viewed, taps and navigation paths, session length, feature usage, and performance metrics to improve stability and user experience.</li>
-          <li><strong>Location data (optional):</strong> with your permission, coarse or precise location to suggest delivery options or display regional availability. You may revoke permission in device settings at any time.</li>
-          <li><strong>Communications:</strong> content of emails, in-app chat, or calls when you contact us for support or marketing opt-in preferences.</li>
-        </ul>
-
-        <h3>4. Sources of Information</h3>
-        <p>We collect information directly from you when you register, shop, request repairs, or contact support; automatically through the App and associated technologies; and from payment, shipping, analytics, and fraud-prevention partners where permitted by law and contract.</p>
-
-        <h3>5. How We Use Information</h3>
-        <p>We use personal information to:</p>
-        <ul>
-          <li>Provide, maintain, and improve the App and our jewelry and repair services;</li>
-          <li>Create and manage user accounts and authenticate access;</li>
-          <li>Process purchases, payments, refunds, and repair orders;</li>
-          <li>Send order confirmations, shipping updates, and repair status notifications;</li>
-          <li>Respond to inquiries and provide customer support;</li>
-          <li>Detect, prevent, and address fraud, abuse, security incidents, and technical issues;</li>
-          <li>Conduct analytics, research, and product development;</li>
-          <li>Comply with legal obligations and enforce our terms and policies;</li>
-          <li>Send promotional communications where you have given consent, with an easy opt-out mechanism.</li>
-        </ul>
-
-        <h3>6. Legal Bases for Processing</h3>
-        <p>Where applicable under laws such as the GDPR or similar frameworks, we rely on: (a) performance of a contract (fulfilling orders and repairs); (b) legitimate interests (security, service improvement, limited marketing analytics); (c) consent (optional location, marketing emails or push notifications); and (d) compliance with legal obligations (tax, accounting, regulatory requests).</p>
-
-        <h3>7. Sharing and Disclosure</h3>
-        <p>We may share personal information with:</p>
-        <ul>
-          <li>Cloud hosting and infrastructure providers;</li>
-          <li>Payment processors and financial institutions;</li>
-          <li>Shipping, courier, and logistics partners;</li>
-          <li>Customer support, email, and messaging service providers;</li>
-          <li>Analytics, crash reporting, and app performance vendors bound by confidentiality;</li>
-          <li>Professional advisers (legal, accounting) under duty of confidentiality;</li>
-          <li>Authorities, regulators, or law enforcement when required by applicable law or to protect rights, safety, and property;</li>
-          <li>Successors in connection with a merger, acquisition, or sale of assets, subject to this Privacy Policy.</li>
-        </ul>
-        <p>We do not sell your personal information to data brokers for their independent commercial purposes.</p>
-
-        <h3>8. International Data Transfers</h3>
-        <p>Your information may be processed in the Republic of Korea and in other countries where our service providers operate. When we transfer data internationally, we implement appropriate safeguards such as standard contractual clauses or equivalent mechanisms as required by applicable law.</p>
-
-        <h3>9. Data Retention</h3>
-        <p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, including providing services, maintaining business and repair records, resolving disputes, enforcing agreements, and meeting legal, tax, and regulatory retention periods. When retention is no longer required, we delete or anonymize data in accordance with our internal schedules and technical capabilities.</p>
-
-        <h3>10. Security Measures</h3>
-        <p>We employ administrative, technical, and organizational safeguards designed to protect personal information, including encryption in transit (TLS/HTTPS), access controls, secure development practices, and staff training. No system is completely secure; we cannot guarantee absolute protection against unauthorized access or disclosure.</p>
-
-        <h3>11. Your Rights and Choices</h3>
-        <p>Depending on your jurisdiction, you may have rights to access, rectify, erase, restrict, or object to certain processing, data portability, and withdrawal of consent where processing is consent-based. You may also opt out of marketing communications via unsubscribe links or by contacting us. To exercise your rights, email <a href="mailto:dr.jewelry.korea@gmail.com">dr.jewelry.korea@gmail.com</a>. We will verify requests and respond within timelines required by law. You may lodge a complaint with your local supervisory authority.</p>
-
-        <h3>12. Children's Privacy</h3>
-        <p>The App is not intended for children under 13 years of age (or the minimum digital consent age in your country). We do not knowingly collect personal information from children. If you believe a child has provided us data, contact us and we will take steps to delete it promptly.</p>
-
-        <h3>13. Third-Party Links and SDKs</h3>
-        <p>The App may integrate third-party software development kits (SDKs) for analytics, authentication, maps, or payments, and may link to external sites. Those third parties process data under their own privacy policies. We encourage you to review their terms before use.</p>
-
-        <h3>14. Push Notifications</h3>
-        <p>With your consent, we may send push notifications about orders, repairs, and promotional offers. You can disable notifications in your device or App settings at any time.</p>
-
-        <h3>15. Changes to This Privacy Policy</h3>
-        <p>We may update this Privacy Policy to reflect changes in law, technology, or our practices. The revised version will be posted in the App and on our website with an updated effective date. Material changes may be communicated via the App, email, or in-app notice. Continued use after the effective date constitutes acceptance of the updated policy.</p>
-
-        <h3>16. Contact Us</h3>
-        <p>For privacy-related questions, requests, or complaints:</p>
-        <p>
-          <strong>Doctor Yuvelirka</strong><br>
-          Developer / Data Controller<br>
-          Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea<br>
-          Email: <a href="mailto:dr.jewelry.korea@gmail.com">dr.jewelry.korea@gmail.com</a>
-        </p>
-      </div>
+      <div class="privacy-scroll" id="privacy-scroll"><!-- filled by i18n --></div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 <span>Doctor Yuvelirka</span>. All rights reserved.</p>
+    <p data-i18n-html="footerText">&copy; 2026 <span>Doctor Yuvelirka</span>. All rights reserved.</p>
   </footer>
+
+  <script>
+window.I18N = {"en":{"htmlLang":"en","privacyBody":"<h3>1. Introduction</h3><p>Doctor Yuvelirka (\"Company,\" \"we,\" \"us,\" or \"our\") publishes the Doctor Yuvelirka mobile application (the \"App\") and related websites and services. This Privacy Policy describes how we collect, use, store, share, and protect personal information when you download, register for, or use the App. By using the App, you acknowledge that you have read and understood this Privacy Policy. If you do not agree, please discontinue use of the App.</p><h3>2. Scope</h3><p>This policy applies to personal information processed through the App, customer support channels linked to the App, and online order or repair flows initiated within the App. It does not apply to third-party websites or services that we do not control, even if linked from the App.</p><h3>3. Information We Collect</h3><p>We may collect the following categories of information, depending on how you use the App:</p><ul><li><strong>Identity and contact data:</strong> full name, email address, telephone number, billing and shipping addresses, and account login credentials.</li><li><strong>Transaction and service data:</strong> product orders, repair job details, item descriptions, estimated values, photographs you upload, repair milestones, invoices, and support messages.</li><li><strong>Payment data:</strong> payments are handled by certified third-party payment processors. We do not store complete payment card numbers on our systems; we may retain transaction IDs, payment status, and limited billing metadata.</li><li><strong>Device and technical data:</strong> device model, operating system, app version, language settings, IP address, mobile identifiers, crash reports, diagnostic logs, and security event data.</li><li><strong>Usage analytics:</strong> screens viewed, taps and navigation paths, session length, feature usage, and performance metrics to improve stability and user experience.</li><li><strong>Location data (optional):</strong> with your permission, coarse or precise location to suggest delivery options or display regional availability. You may revoke permission in device settings at any time.</li><li><strong>Communications:</strong> content of emails, in-app chat, or calls when you contact us for support or marketing opt-in preferences.</li></ul><h3>4. Sources of Information</h3><p>We collect information directly from you when you register, shop, request repairs, or contact support; automatically through the App and associated technologies; and from payment, shipping, analytics, and fraud-prevention partners where permitted by law and contract.</p><h3>5. How We Use Information</h3><p>We use personal information to:</p><ul><li>Provide, maintain, and improve the App and our jewelry and repair services;</li><li>Create and manage user accounts and authenticate access;</li><li>Process purchases, payments, refunds, and repair orders;</li><li>Send order confirmations, shipping updates, and repair status notifications;</li><li>Respond to inquiries and provide customer support;</li><li>Detect, prevent, and address fraud, abuse, security incidents, and technical issues;</li><li>Conduct analytics, research, and product development;</li><li>Comply with legal obligations and enforce our terms and policies;</li><li>Send promotional communications where you have given consent, with an easy opt-out mechanism.</li></ul><h3>6. Legal Bases for Processing</h3><p>Where applicable under laws such as the GDPR or similar frameworks, we rely on: (a) performance of a contract (fulfilling orders and repairs); (b) legitimate interests (security, service improvement, limited marketing analytics); (c) consent (optional location, marketing emails or push notifications); and (d) compliance with legal obligations (tax, accounting, regulatory requests).</p><h3>7. Sharing and Disclosure</h3><p>We may share personal information with cloud hosting providers, payment processors, shipping partners, customer support vendors, analytics and crash-reporting services, professional advisers, authorities when required by law, and successors in a merger or acquisition, subject to this Privacy Policy. We do not sell your personal information to data brokers for their independent commercial purposes.</p><h3>8. International Data Transfers</h3><p>Your information may be processed in the Republic of Korea and in other countries where our service providers operate. When we transfer data internationally, we implement appropriate safeguards such as standard contractual clauses or equivalent mechanisms as required by applicable law.</p><h3>9. Data Retention</h3><p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, including providing services, maintaining business and repair records, resolving disputes, enforcing agreements, and meeting legal, tax, and regulatory retention periods. When retention is no longer required, we delete or anonymize data in accordance with our internal schedules and technical capabilities.</p><h3>10. Security Measures</h3><p>We employ administrative, technical, and organizational safeguards designed to protect personal information, including encryption in transit (TLS/HTTPS), access controls, secure development practices, and staff training. No system is completely secure; we cannot guarantee absolute protection against unauthorized access or disclosure.</p><h3>11. Your Rights and Choices</h3><p>Depending on your jurisdiction, you may have rights to access, rectify, erase, restrict, or object to certain processing, data portability, and withdrawal of consent where processing is consent-based. You may opt out of marketing communications via unsubscribe links or by contacting us. To exercise your rights, email <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a>. We will verify requests and respond within timelines required by law. You may lodge a complaint with your local supervisory authority.</p><h3>12. Children's Privacy</h3><p>The App is not intended for children under 13 years of age (or the minimum digital consent age in your country). We do not knowingly collect personal information from children. If you believe a child has provided us data, contact us and we will take steps to delete it promptly.</p><h3>13. Third-Party Links and SDKs</h3><p>The App may integrate third-party software development kits (SDKs) for analytics, authentication, maps, or payments, and may link to external sites. Those third parties process data under their own privacy policies. We encourage you to review their terms before use.</p><h3>14. Push Notifications</h3><p>With your consent, we may send push notifications about orders, repairs, and promotional offers. You can disable notifications in your device or App settings at any time.</p><h3>15. Changes to This Privacy Policy</h3><p>We may update this Privacy Policy to reflect changes in law, technology, or our practices. The revised version will be posted in the App and on our website with an updated effective date. Material changes may be communicated via the App, email, or in-app notice. Continued use after the effective date constitutes acceptance of the updated policy.</p><h3>16. Contact Us</h3><p>For privacy-related questions, requests, or complaints:</p><p><strong>Doctor Yuvelirka</strong><br>Developer / Data Controller<br>Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea<br>Email: <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a></p>","pageTitle":"Doctor Yuvelirka | Premium Jewelry & Restoration","metaDescription":"Doctor Yuvelirka — premium jewelry retail and expert repair in Incheon, South Korea. Official app coming soon to Google Play.","logoAlt":"Doctor Yuvelirka — gold chalice and serpent emblem","aboutImgAlt":"Artisan working on jewelry at Doctor Yuvelirka","tagline":"Jewelry · Restoration · Excellence","navAbout":"About","navServices":"Services","navApp":"App","navContact":"Contact","navPrivacy":"Privacy","heroEyebrow":"Incheon · Republic of Korea","heroTitle":"Where Fine Jewelry Meets Master Restoration","heroText":"Boutique retail and a dedicated repair atelier for clients who expect precision, discretion, and lasting beauty in every piece.","aboutTitle":"About Us","aboutP1":"<strong>Doctor Yuvelirka</strong> is a premium jewelry house and restoration workshop located in <strong>Incheon, Republic of Korea</strong>. We combine curated retail with bench-level expertise so every client receives a seamless experience—from selecting a piece to maintaining it for generations.","aboutP2":"Our team works with precious metals, gemstones, and complex settings using proven traditional methods and modern equipment. Whether you visit us for a new acquisition or entrust us with a family heirloom, we treat each project with documented care and transparent communication.","aboutP3":"From our address in Yeonsu-gu, we serve local and international customers who value craftsmanship, authenticity, and white-glove service at every stage.","servicesTitle":"Our Services","svc1Title":"Jewelry Retail","svc1Text":"Handpicked rings, necklaces, earrings, and bespoke designs selected for quality of materials, finish, and timeless appeal. Personal consultation available in store.","svc2Title":"Repair & Restoration","svc2Text":"Resizing, stone tightening, soldering, polishing, rhodium plating, and full structural restoration. Each repair is assessed, quoted, and tracked through completion.","svc3Title":"E-Commerce","svc3Text":"Digital catalog, order requests, and integrated service workflows. Our upcoming mobile app extends secure shopping and live repair status for modern convenience.","appTitle":"Mobile App","appBadge":"Coming Soon to Google Play","appP1":"The official <strong>Doctor Yuvelirka</strong> Android app is under active development for release on Google Play. Customers will browse selected collections, place orders securely, submit repair requests with photos, and <strong>track repair status in real time</strong> from drop-off to pickup.","appP2":"For partnerships or pre-launch inquiries, please contact us using the details below.","contactTitle":"Contact","contactDev":"Developer Name","contactAddr":"Address","contactEmail":"Email","contactAddrVal":"Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea","privacyTitle":"Privacy Policy","privacyIntro":"Privacy Policy for the <strong style=\"color: var(--gold-light);\">Doctor Yuvelirka</strong> mobile application · Effective: October 21, 2026","footerText":"&copy; 2026 <span>Doctor Yuvelirka</span>. All rights reserved."},"ko":{"htmlLang":"ko","privacyBody":"<h3>1. 서문</h3><p>Doctor Yuvelirka(이하 \"회사\", \"당사\")는 Doctor Yuvelirka 모바일 애플리케이션(이하 \"앱\") 및 관련 웹사이트·서비스를 제공합니다. 본 개인정보 처리방침은 앱 다운로드, 회원가입 또는 이용 시 개인정보를 어떻게 수집·이용·보관·공유·보호하는지 설명합니다. 앱을 이용하면 본 방침을 읽고 이해한 것으로 간주됩니다. 동의하지 않으시면 앱 이용을 중단해 주십시오.</p><h3>2. 적용 범위</h3><p>본 방침은 앱을 통해 처리되는 개인정보, 앱과 연계된 고객 지원 채널, 앱 내에서 시작된 온라인 주문·수리 절차에 적용됩니다. 앱에서 링크된 제3자 웹사이트·서비스에는 적용되지 않습니다.</p><h3>3. 수집하는 정보</h3><p>앱 이용 방식에 따라 다음 정보를 수집할 수 있습니다.</p><ul><li><strong>신원 및 연락처:</strong> 성명, 이메일, 전화번호, 청구·배송 주소, 계정 로그인 정보</li><li><strong>거래 및 서비스:</strong> 주문, 수리 접수 내역, 품목 설명, 추정 가치, 업로드 사진, 수리 진행 단계, 청구서, 상담 메시지</li><li><strong>결제:</strong> 인증된 제3자 결제대행사가 처리하며, 당사는 카드 번호 전체를 저장하지 않습니다.</li><li><strong>기기·기술:</strong> 기기 모델, OS, 앱 버전, 언어, IP, 식별자, 충돌·진단 로그, 보안 이벤트</li><li><strong>이용 분석:</strong> 화면 조회, 탐색 경로, 세션 시간, 기능 사용, 성능 지표</li><li><strong>위치(선택):</strong> 동의 시 배송·지역 서비스 안내를 위한 위치 정보</li><li><strong>커뮤니케이션:</strong> 지원·마케팅 수신 동의와 관련한 이메일, 채팅, 통화 내용</li></ul><h3>4. 정보의 출처</h3><p>회원가입·쇼핑·수리 요청·고객 지원 시 직접 제공받고, 앱 및 관련 기술을 통해 자동 수집하며, 법률·계약이 허용하는 범위에서 결제·배송·분석·사기 방지 파트너로부터 받을 수 있습니다.</p><h3>5. 이용 목적</h3><ul><li>앱 및 주얼리·수리 서비스 제공·개선</li><li>계정 생성·관리 및 인증</li><li>구매·결제·환불·수리 주문 처리</li><li>주문 확인, 배송·수리 상태 알림</li><li>문의 응대 및 고객 지원</li><li>사기·남용·보안 사고·기술 문제 대응</li><li>분석·연구·제품 개발</li><li>법적 의무 이행 및 약관·정책 집행</li><li>동의하신 경우 프로모션 안내(수신 거부 가능)</li></ul><h3>6. 처리의 법적 근거</h3><p>GDPR 등 적용 법률에 따라 계약 이행, 정당한 이익(보안·서비스 개선·제한적 마케팅 분석), 동의(선택 위치·마케팅·푸시), 법적 의무(세무·회계·규제)에 근거할 수 있습니다.</p><h3>7. 제공 및 공개</h3><p>클라우드 호스팅, 결제, 배송, 고객 지원, 분석·충돌 리포팅, 전문 자문인, 법령에 따른 당국, M&amp;A 시 승계인 등과 정보를 공유할 수 있습니다. 데이터 브로커에게 독자적 마케팅 목적으로 개인정보를 판매하지 않습니다.</p><h3>8. 국외 이전</h3><p>정보는 대한민국 및 서비스 제공업체가 운영하는 다른 국가에서 처리될 수 있으며, 관련 법령에 따른 표준계약조항 등 적절한 보호조치를 적용합니다.</p><h3>9. 보관 기간</h3><p>서비스 제공, 수리·거래 기록 유지, 분쟁 해결, 계약 이행, 법·세무·규제상 보관 의무 충족에 필요한 기간 동안 보관합니다. 불필요해지면 내부 일정에 따라 삭제 또는 익명화합니다.</p><h3>10. 보안</h3><p>TLS/HTTPS, 접근 통제, 보안 개발, 교육 등 행정·기술·조직적 보호조치를 시행합니다. 완전한 안전을 보장할 수는 없습니다.</p><h3>11. 이용자 권리</h3><p>관할에 따라 열람·정정·삭제·처리 제한·반대·이동권·동의 철회 등을 행사할 수 있습니다. <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a> 로 요청해 주십시오.</p><h3>12. 아동</h3><p>만 13세 미만(또는 해당 국가의 최소 연령)을 대상으로 하지 않으며, 아동 정보를 고의로 수집하지 않습니다.</p><h3>13. 제3자 링크·SDK</h3><p>분석·인증·지도·결제 등 제3자 SDK 및 외부 사이트 링크가 포함될 수 있으며, 각자의 개인정보 처리방침이 적용됩니다.</p><h3>14. 푸시 알림</h3><p>동의 시 주문·수리·프로모션 알림을 보낼 수 있으며, 기기 또는 앱 설정에서 비활성화할 수 있습니다.</p><h3>15. 방침 변경</h3><p>법률·기술·운영 변경 시 본 방침을 개정하고 앱·웹에 게시합니다.</p><h3>16. 문의</h3><p><strong>Doctor Yuvelirka</strong><br>개발자 / 개인정보 처리자<br>Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea<br>이메일: <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a></p>","pageTitle":"Doctor Yuvelirka | 프리미엄 주얼리 & 복원","metaDescription":"Doctor Yuvelirka — 인천 기반 프리미엄 주얼리 리테일 및 전문 수리. Google Play 공식 앱 출시 예정.","logoAlt":"Doctor Yuvelirka — 금색 성배와 뱀 엠블럼","aboutImgAlt":"Doctor Yuvelirka에서 주얼리 작업 중인 장인","tagline":"주얼리 · 복원 · 장인정신","navAbout":"소개","navServices":"서비스","navApp":"앱","navContact":"문의","navPrivacy":"개인정보","heroEyebrow":"인천 · 대한민국","heroTitle":"정교한 주얼리와 장인의 복원이 만나는 곳","heroText":"정밀함, 신뢰, 그리고 영원한 아름다움을 기대하는 고객을 위한 부티크 리테일과 전문 수리 아틀리에.","aboutTitle":"회사 소개","aboutP1":"<strong>Doctor Yuvelirka</strong>는 <strong>대한민국 인천</strong>에 위치한 프리미엄 주얼리 하우스이자 복원 공방입니다. 엄선된 리테일과 벤치급 장인 기술을 결합해, 선택부터 세대를 넘는 관리까지 매끄러운 경험을 제공합니다.","aboutP2":"귀금속, 보석, 복잡한 세팅을 전통 공법과 현대 장비로 다룹니다. 신규 구매든 가문의 유산이든 모든 작업을 기록된 케어와 투명한 커뮤니케이션으로 진행합니다.","aboutP3":"연수구에 위치한 공방에서 장인정신, 진정성, 프리미엄 서비스를 중시하는 국내외 고객을 모시고 있습니다.","servicesTitle":"서비스","svc1Title":"주얼리 리테일","svc1Text":"재료, 마감, 시대를 초월한 매력을 기준으로 엄선한 반지, 목걸이, 귀걸이 및 맞춤 디자인. 매장 상담 가능.","svc2Title":"수리 및 복원","svc2Text":"사이즈 조정, 스톤 체결, 납땜, 폴리싱, 로듐 도금, 구조 복원. 모든 수리는 견적·진행·완료까지 추적됩니다.","svc3Title":"이커머스","svc3Text":"디지털 카탈로그, 주문 요청, 통합 서비스 워크플로. 출시 예정 모바일 앱으로 안전한 쇼핑과 실시간 수리 상태 확인.","appTitle":"모바일 앱","appBadge":"Google Play 출시 예정","appP1":"공식 <strong>Doctor Yuvelirka</strong> Android 앱이 Google Play 출시를 위해 개발 중입니다. 고객은 컬렉션을 둘러보고, 안전하게 주문하며, 사진과 함께 수리를 요청하고, <strong>실시간으로 수리 상태</strong>를 확인할 수 있습니다.","appP2":"파트너십 또는 출시 전 문의는 아래 연락처로 부탁드립니다.","contactTitle":"연락처","contactDev":"개발자명","contactAddr":"주소","contactEmail":"이메일","contactAddrVal":"Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea","privacyTitle":"개인정보 처리방침","privacyIntro":"<strong style=\"color: var(--gold-light);\">Doctor Yuvelirka</strong> 모바일 애플리케이션 개인정보 처리방침 · 시행일: 2026년 10월 21일","footerText":"&copy; 2026 <span>Doctor Yuvelirka</span>. All rights reserved."},"ru":{"htmlLang":"ru","privacyBody":"<h3>1. Введение</h3><p>Doctor Yuvelirka («Компания», «мы») предоставляет мобильное приложение Doctor Yuvelirka («Приложение») и связанные сервисы. Настоящая Политика конфиденциальности описывает, как мы собираем, используем, храним, передаём и защищаем персональные данные при использовании Приложения. Используя Приложение, вы подтверждаете, что ознакомились с Политикой.</p><h3>2. Область действия</h3><p>Политика применяется к данным, обрабатываемым через Приложение, каналы поддержки и заказы/ремонт, инициированные в Приложении. На сторонние сайты, которыми мы не управляем, Политика не распространяется.</p><h3>3. Какие данные мы собираем</h3><ul><li><strong>Идентификация и контакты:</strong> ФИО, email, телефон, адреса, учётные данные.</li><li><strong>Транзакции и услуги:</strong> заказы, сведения о ремонте, описание изделий, фото, этапы ремонта, счета, переписка.</li><li><strong>Платежи:</strong> обрабатываются сертифицированными провайдерами; полные номера карт мы не храним.</li><li><strong>Устройство и технические данные:</strong> модель, ОС, версия приложения, IP, журналы, события безопасности.</li><li><strong>Аналитика:</strong> экраны, навигация, сессии, функции, производительность.</li><li><strong>Геолокация (по согласию):</strong> для доставки и региональной доступности.</li><li><strong>Коммуникации:</strong> обращения в поддержку и предпочтения по маркетингу.</li></ul><h3>4. Источники данных</h3><p>Данные предоставляются вами; собираются автоматически через Приложение; могут поступать от партнёров по оплате, доставке и аналитике в рамках закона.</p><h3>5. Цели использования</h3><ul><li>Предоставление и улучшение услуг продажи украшений и ремонта;</li><li>Учётные записи и аутентификация;</li><li>Заказы, платежи, возвраты, ремонты;</li><li>Уведомления о заказах и статусе ремонта;</li><li>Поддержка клиентов;</li><li>Безопасность и противодействие мошенничеству;</li><li>Аналитика и разработка;</li><li>Соблюдение законодательства;</li><li>Маркетинг при наличии согласия.</li></ul><h3>6. Правовые основания</h3><p>Исполнение договора, законные интересы, согласие, юридические обязанности (в т.ч. GDPR).</p><h3>7. Передача третьим лицам</h3><p>Хостинг, платёжные системы, логистика, поддержка, аналитика, консультанты, органы власти, правопреемники. Мы не продаём данные брокерам.</p><h3>8. Трансграничная передача</h3><p>Обработка в Республике Корея и других странах с применением договорных и иных мер защиты.</p><h3>9. Срок хранения</h3><p>Данные хранятся столько, сколько необходимо для целей Политики и требований закона, затем удаляются или обезличиваются.</p><h3>10. Безопасность</h3><p>TLS/HTTPS, контроль доступа, безопасная разработка, обучение персонала.</p><h3>11. Ваши права</h3><p>Доступ, исправление, удаление, ограничение, возражение, переносимость, отзыв согласия. Запросы: <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a>.</p><h3>12. Дети</h3><p>Не предназначено для лиц младше 13 лет (или минимального возраста в вашей стране).</p><h3>13. Ссылки и SDK</h3><p>SDK и внешние сайты регулируются их политиками.</p><h3>14. Push-уведомления</h3><p>При согласии — о заказах, ремонте, акциях; отключение в настройках.</p><h3>15. Изменения</h3><p>Актуальная версия публикуется в Приложении и на сайте.</p><h3>16. Контакты</h3><p><strong>Doctor Yuvelirka</strong><br>Разработчик / оператор данных<br>Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea<br>Email: <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a></p>","pageTitle":"Doctor Yuvelirka | Премиальные украшения и реставрация","metaDescription":"Doctor Yuvelirka — премиальный ювелирный салон и мастерская ремонта в Инчоне, Южная Корея. Скоро в Google Play.","logoAlt":"Doctor Yuvelirka — золотой символ чаши и змеи","aboutImgAlt":"Мастер за работой в Doctor Yuvelirka","tagline":"Украшения · Реставрация · Совершенство","navAbout":"О нас","navServices":"Услуги","navApp":"Приложение","navContact":"Контакты","navPrivacy":"Конфиденциальность","heroEyebrow":"Инчон · Республика Корея","heroTitle":"Где изысканные украшения встречаются с мастерской реставрацией","heroText":"Бутиковая розница и ателье ремонта для клиентов, которые ценят точность, конфиденциальность и долговечную красоту каждого изделия.","aboutTitle":"О нас","aboutP1":"<strong>Doctor Yuvelirka</strong> — премиальный ювелирный дом и мастерская реставрации в <strong>Инчоне, Республика Корея</strong>. Мы сочетаем curated-ритейл с мастерством ювелирной скамьи для безупречного пути от выбора украшения до ухода за ним.","aboutP2":"Мы работаем с драгоценными металлами, камнями и сложными закрепками, используя проверенные традиции и современное оборудование. Каждый проект — с документированным уходом и прозрачной коммуникацией.","aboutP3":"Из Yeonsu-gu мы обслуживаем местных и международных клиентов, ценящих подлинное мастерство и сервис высокого класса.","servicesTitle":"Наши услуги","svc1Title":"Продажа украшений","svc1Text":"Отобранные кольца, колье, серьги и индивидуальные модели — по качеству материалов, полировки и вне времени эстетики. Персональная консультация в салоне.","svc2Title":"Ремонт и реставрация","svc2Text":"Изменение размера, закрепление камней, пайка, полировка, родирование, полная структурная реставрация. Каждый ремонт оценивается, согласовывается и отслеживается до завершения.","svc3Title":"Электронная коммерция","svc3Text":"Цифровой каталог, заявки на заказ и интегрированные процессы обслуживания. Мобильное приложение добавит безопасные покупки и статус ремонта в реальном времени.","appTitle":"Мобильное приложение","appBadge":"Скоро в Google Play","appP1":"Официальное Android-приложение <strong>Doctor Yuvelirka</strong> готовится к публикации в Google Play. Клиенты смогут выбирать коллекции, оформлять заказы, отправлять заявки на ремонт с фото и <strong>отслеживать статус ремонта в реальном времени</strong>.","appP2":"По партнёрству и вопросам до запуска — контакты ниже.","contactTitle":"Контакты","contactDev":"Имя разработчика","contactAddr":"Адрес","contactEmail":"Email","contactAddrVal":"Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea","privacyTitle":"Политика конфиденциальности","privacyIntro":"Политика конфиденциальности мобильного приложения <strong style=\"color: var(--gold-light);\">Doctor Yuvelirka</strong> · Дата вступления в силу: 21 октября 2026 г.","footerText":"&copy; 2026 <span>Doctor Yuvelirka</span>. Все права защищены."},"kk":{"htmlLang":"kk","privacyBody":"<h3>1. Кіріспе</h3><p>Doctor Yuvelirka («Компания», «біз») Doctor Yuvelirka мобильді қосымшасын («Қосымша») және байланысты сервистерді ұсынады. Осы Құпиялылық саясаты жеке деректерді қалай жинайтынымызды, қолданатынымызды, сақтайтынымызды, бөлісетінімізді және қорғайтынымызды сипаттайды.</p><h3>2. Қолданылу аясы</h3><p>Саясат Қосымша арқылы өңделетін деректерге, қолдау арналарына және Қосымшада басталған тапсырыс пен жөндеу процестеріне қатысты.</p><h3>3. Жиналатын ақпарат</h3><ul><li><strong>Жеке және байланыс:</strong> аты-жөні, email, телефон, мекенжай, логин</li><li><strong>Мәміле және қызмет:</strong> тапсырыс, жөндеу, сипаттама, фото, кезеңдер, шот-фактура</li><li><strong>Төлем:</strong> сертификатталған провайдерлер; толық карта нөмірлерін сақтамаймыз</li><li><strong>Құрылғы:</strong> модель, ОЖ, нұсқа, IP, журналдар</li><li><strong>Аналитика:</strong> экрандар, навигация, сессия</li><li><strong>Орналасу (міндетті емес):</strong> келісіммен жеткізу үшін</li></ul><h3>4. Ақпарат көздері</h3><p>Тіркелу, сатып алу, жөндеу, қолдау; автоматты жинау; заңға сәйкес серіктестер.</p><h3>5. Пайдалану мақсаттары</h3><ul><li>Қосымша және зергерлік қызметтерді көрсету және жақсарту</li><li>Есептік жазбалар</li><li>Тапсырыс, төлем, жөндеу</li><li>Хабарландырулар</li><li>Қолдау және қауіпсіздік</li><li>Заңды міндеттемелер</li></ul><h3>6. Құқықтық негіздер</h3><p>Келісім-шарт орындалуы, заңды мүдде, келісім және заң талаптары.</p><h3>7. Үшінші тараптармен бөлісу</h3><p>Хостинг, төлем, логистика, аналитика, кеңесшілер, заңмен талап etilген органдар. Деректерді брокерлерге сатпаймыз.</p><h3>8. Халықаралық тасымалдау</h3><p>Кorea Республикасы және провайдер елдерінде өңдеу; стандартты шарттар мен қорғау шаралары.</p><h3>9. Сақтау мерзімі</h3><p>Мақсаттарға, жөндеу/бизнес жазбаларына және заң талаптарына сай; кейін жою немесе анонимдеу.</p><h3>10. Қауіпсіздік</h3><p>TLS/HTTPS, рұқsatтар, қауіпсіз әзірлеу. Толық кепілдік берілмейді.</p><h3>11. Құқықтарыңыз</h3><p>Қол жеткізу, түзету, жою, шектеу, қарсылық, тасымалдау, келісімді к geri алu. <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a></p><h3>12. Балалар</h3><p>13 жасқа дейін (не eldegi минималды жас) арналмаған.</p><h3>13. SDK және сілтемелер</h3><p>Үшінші тарап SDK өз саясатымен жұмыс істейді.</p><h3>14. Push хабарландырулар</h3><p>Келісіммен; параметрлерден өшіруге болады.</p><h3>15. Өзгерістер</h3><p>Жаңартылған нұсқа Қосымша мен сайтта жарияланады.</p><h3>16. Байланыс</h3><p><strong>Doctor Yuvelirka</strong><br>Әзірлеуші / деректер операторы<br>Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea<br>Email: <a href=\"mailto:dr.jewelry.korea@gmail.com\">dr.jewelry.korea@gmail.com</a></p>","pageTitle":"Doctor Yuvelirka | Премиум зергерлік бұйымдар","metaDescription":"Doctor Yuvelirka — Инчондағы премиум зергерлік дүкен және кәсіби жөндеу. Google Play-де жақында.","logoAlt":"Doctor Yuvelirka — алтын кубок пен жilan эмблемасы","aboutImgAlt":"Doctor Yuvelirka-да зергер жұмыс істеп жатыр","tagline":"Зергерлік · Реставрация · Мінсіздік","navAbout":"Біз туралы","navServices":"Қызметтер","navApp":"Қосымша","navContact":"Байланыс","navPrivacy":"Құпиялылық","heroEyebrow":"Инчон · Корея Республикасы","heroTitle":"Сапалы зергерлік бұйымдар мен шеберлік реставрация","heroText":"Дәлдік пен сенімділікті қадірлейтін клиенттерге арналған бутик сату және жөндеу ателье.","aboutTitle":"Біз туралы","aboutP1":"<strong>Doctor Yuvelirka</strong> — <strong>Инчон, Корея Республикасы</strong> орналасқан премиум зергерлік үйі мен реставрация шеберханасы. Таңдаудан ұзақ мерзімді күтуге дейін үздіксіз тәжірибе ұсынамыз.","aboutP2":"Қымбат металдар, асыл тастар және күрделі орнатумен дәстүрлі әдіс пен заманауи жабдықпен жұмыс істейміз. Әр жоба — құжатталған қамқорлық пен ашық байланыс.","aboutP3":"Yeonsu-gu мекенжайынан шеберлік пен аутентикалық сервисті бағалайтын клиенттерге қызмет көрсетеміз.","servicesTitle":"Қызметтеріміз","svc1Title":"Зергерлік сату","svc1Text":"Сапа, полировка және уақытсыз стиль бойынша таңдалған сақина, алқа, сырға және жеке дизайн. Дүкенде кеңес.","svc2Title":"Жөндеу және реставрация","svc2Text":"Өлшем, тас бекіту, дәнекерлеу, полировка, родий, толық реставрация. Әр жөндеу бағalanады және орындалу барысында бақыланады.","svc3Title":"Электрондық сауда","svc3Text":"Цифрлық каталог, тапсырыс және интеграцияланған сервис. Жақында шығатын мобильді қосымша — қауipсіз сатып алу және жөндеу статусы.","appTitle":"Мобильді қосымша","appBadge":"Google Play-де жақында","appP1":"Ресми <strong>Doctor Yuvelirka</strong> Android қосымшасы Google Play-ге дайындалуда. Клиенттер коллекцияларды көреді, тапсырыс береді, жөндеу сұрайды және <strong>нақты уақытта статусты</strong> бақылай алады.","appP2":"Серіктестік немесе іске қосу алдындағы сұрақтар — төмендегі байланыс.","contactTitle":"Байланыс","contactDev":"Әзірлеуші аты","contactAddr":"Мекенжай","contactEmail":"Email","contactAddrVal":"Unit 101, 81 Hambak-ro, Yeonsu-gu, Incheon (Yeonsu-dong), Republic of Korea","privacyTitle":"Құпиялылық саясаты","privacyIntro":"<strong style=\"color: var(--gold-light);\">Doctor Yuvelirka</strong> мобильді қосымшасы · Күшіне ену: 2026 ж. 21 қазан","footerText":"&copy; 2026 <span>Doctor Yuvelirka</span>. Барлық құқықтар қорғалған."}};
+</script>
+  <script>
+    (function () {
+      var LANG_LABELS = {
+        en: "🇬🇧 English",
+        ko: "🇰🇷 한국어",
+        ru: "🇷🇺 Русский",
+        kk: "🇰🇿 Қазақша"
+      };
+
+      var dropdown = document.getElementById("lang-dropdown");
+      var trigger = document.getElementById("lang-trigger");
+      var menu = document.getElementById("lang-menu");
+      var currentLabel = document.getElementById("lang-current");
+      var options = menu.querySelectorAll(".lang-option");
+
+      function closeDropdown() {
+        dropdown.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
+      }
+
+      function openDropdown() {
+        dropdown.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (dropdown.classList.contains("open")) closeDropdown();
+        else openDropdown();
+      });
+
+      document.addEventListener("click", function () {
+        closeDropdown();
+      });
+
+      menu.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      function applyLanguage(lang) {
+        var t = window.I18N[lang];
+        if (!t) return;
+
+        document.documentElement.lang = t.htmlLang || lang;
+        document.getElementById("doc-title").textContent = t.pageTitle;
+        document.getElementById("meta-description").setAttribute("content", t.metaDescription);
+        document.getElementById("logo-alt").setAttribute("alt", t.logoAlt);
+        document.getElementById("about-img-alt").setAttribute("alt", t.aboutImgAlt);
+
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n");
+          if (t[key] != null) el.textContent = t[key];
+        });
+
+        document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-html");
+          if (t[key] != null) el.innerHTML = t[key];
+        });
+
+        document.getElementById("privacy-scroll").innerHTML = t.privacyBody;
+        currentLabel.textContent = LANG_LABELS[lang];
+
+        options.forEach(function (opt) {
+          opt.setAttribute("aria-selected", opt.getAttribute("data-lang") === lang ? "true" : "false");
+        });
+      }
+
+      options.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var lang = btn.getAttribute("data-lang");
+          applyLanguage(lang);
+          closeDropdown();
+        });
+      });
+
+      applyLanguage("en");
+    })();
+  </script>
 </body>
 </html>
